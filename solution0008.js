@@ -32,4 +32,6 @@ function fib(n) {
 console.log(fib(2), 1)
 console.log(fib(4), 1)
 
+//we started with an initial array saying when we get here stop, recursion call it's self into we tell it to stop and that's the base case (array on line 26)
+
 
