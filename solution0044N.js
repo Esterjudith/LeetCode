@@ -13,7 +13,7 @@
 
 // Example 1:
 
-// Input: nums = [1,2,3,4]
+// Input: nums = [1,2,3,4] [1][24] [1][12] [2][4] [6][1]
 // Output: [24,12,8,6]
 // Example 2:
 
@@ -46,36 +46,42 @@ var productExceptSelf = function(nums) {
         //Otherwise, multiply nums[i-1] times the prefix at position i-1
         //and add that to the prefix array at position 5
         prefix[i] = nums[i-1] * prefix[i-1]
-
+       
     }
   }
+
+   //Then, let's create a suffix array
+   const suffix =[]
+
+   //Move right in the input array
+   for(let i = nums.length -1; i >=0; i--){
+     //For the last indes, we have nosuffix, so just add a 1 to the position
+     if(i===nums.length - 1){
+         suffix[i] = 1
+     }else {
+         //Otherwise, we multiply nums[i+ 1] by the suffix at positon i + 1
+         //and add that to the suffix array at postion i
+         suffix[i] = nums[i + 1] * suffix[i + 1]
+     }
+    }
+    //Finally, our result array should be the products of prefix * suffix for each positon
+ 
+   const result = []
+ 
+   for(let i= 0; i < nums.length; i++){
+     result[i] = prefix[i] * suffix[i]
+   }
+ 
+   return result
+  }
+
+ 
   
-  //Then, let's create a suffix array
-  const suffix =[]
+  
 
-  //Move right in the input array
-  for(let i = nums.length -1; i >=0; i--){
-    //For the last indes, we have nosuffix, so just add a 1 to the position
-    if(i===nums.length - 1){
-        suffix[i] = 1
-    }else {
-        //Otherwise, we multiply nums[i+ 1] by the suffix at positon i + 1
-        //and add that to the suffix array at postion i
-        suffix[i] = nums[i + 1] * suffix[i + 1]
-    }
-  } 
+ 
 
-  //Finally, our result array should be the products of prefix * suffix for each positon
 
-  const result = []
-
-  for(let i=0; i<nums.length; i++){
-    result[i] = prefix[i] * suffix[i]
-  }
-
-  return result
-
-};
 
 console.log(productExceptSelf([1, 2, 3, 4]));
 
