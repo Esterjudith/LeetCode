@@ -45,7 +45,7 @@ var productExceptSelf = function(nums) {
     }else {
         //Otherwise, multiply nums[i-1] times the prefix at position i-1
         //and add that to the prefix array at position 5
-        prefix[i] = nums[i-1] * prefix[i-1]
+        prefix[i] = nums[i-1] * prefix[i-1] //[1,1,2,6]
        
     }
   }
@@ -61,7 +61,7 @@ var productExceptSelf = function(nums) {
      }else {
          //Otherwise, we multiply nums[i+ 1] by the suffix at positon i + 1
          //and add that to the suffix array at postion i
-         suffix[i] = nums[i + 1] * suffix[i + 1]
+         suffix[i] = nums[i + 1] * suffix[i + 1] //[24,12,4,1]
      }
     }
     //Finally, our result array should be the products of prefix * suffix for each positon
@@ -75,15 +75,9 @@ var productExceptSelf = function(nums) {
    return result
   }
 
- 
-  
-  
-
- 
-
-
-
 console.log(productExceptSelf([1, 2, 3, 4]));
+
+// [1,1,2,6] * [24,12,4,1] = [24,12,8,6]
 
 //O(1):
 
