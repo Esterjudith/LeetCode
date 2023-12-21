@@ -75,8 +75,9 @@ var isValidSudoku = function(board) {
         box.add(_box)
     }
   }
-  return true
+
  }  
+ return true
 };
 console.log(isValidSudoku([["8","3",".",".","7",".",".",".","."],
 ["6",".",".","1","9","5",".",".","."],
